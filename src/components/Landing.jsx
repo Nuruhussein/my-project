@@ -8,18 +8,9 @@ import image1 from "../assets/amir.jpg";
 import image2 from "../assets/image2.png";
 import image3 from "../assets/image3.png";
 import { FaChevronRight } from "react-icons/fa6";
+
 function Landing() {
-  const slides = [
-    {
-      url: image1,
-    },
-    {
-      url: image2,
-    },
-    {
-      url: image3,
-    },
-  ];
+  const slides = [{ url: image1 }, { url: image2 }, { url: image3 }];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -39,25 +30,21 @@ function Landing() {
     setCurrentIndex(slideIndex);
   };
 
-  // Ensure interval is reset when currentIndex changes
   useEffect(() => {
     const interval = setInterval(nextSlide, 10000); // Change slide every 10 seconds
     return () => clearInterval(interval); // Cleanup on unmount
-  }, [currentIndex]); // Dependency on currentIndex ensures correct re-rendering
+  }, [currentIndex]);
 
   const slideVariants = {
-    initial: { opacity: 0.7, scale: 1 },
-    animate: { opacity: 1, scale: 1.05 },
+    initial: { opacity: 0.7, scale: 0.99 },
+    animate: { opacity: 1, scale: 1 },
     exit: { opacity: 0.5, scale: 0.95 },
   };
 
   return (
-    <div
-      className="
-max-w-screen-2xl mx-auto h-[680px] w-full  mb-20 py-4 relative group"
-    >
+    <div className="max-w-screen-2xl w-screen mx-auto h-[680px]  mb-20 pb-4 relative group">
       <motion.div
-        key={currentIndex} // Ensures re-rendering and proper animations
+        key={currentIndex}
         initial="initial"
         animate="animate"
         exit="exit"
@@ -65,10 +52,8 @@ max-w-screen-2xl mx-auto h-[680px] w-full  mb-20 py-4 relative group"
         transition={{ duration: 2, ease: "easeInOut" }}
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(255,255,255,0.2)), url(${slides[currentIndex].url})`,
-          width: "100vw",
-          height: "100vh",
         }}
-        className="w-full flex flex-col justify-center items-center text-center h-full bg-cover bg-center  "
+        className="w-full h-full bg-cover bg-center flex flex-col justify-center items-center text-center"
       >
         <TypeAnimation
           sequence={[
@@ -80,19 +65,19 @@ max-w-screen-2xl mx-auto h-[680px] w-full  mb-20 py-4 relative group"
           wrapper="h2"
           speed={20}
           style={{ whiteSpace: "pre-line", height: "195px", display: "block" }}
-          className="  font-bold text-white sm:text-[48px] text-[40px] leading-[56.8px] font-poppins"
+          className="font-bold text-white sm:text-[48px] text-[40px] leading-[56.8px] font-poppins"
           repeat={2}
         />
-        <div className="sm:flex-row flex flex-col  ">
+        <div className="sm:flex-row flex flex-col">
           <button
             type="button"
-            className={`py-2 mx-3 text-white my-2  px-9   font-medium text-[18px]  bg-sky-500 rounded-[40px]  outline-none`}
+            className="py-2 mx-3 text-white my-2 px-9 font-medium text-[18px] bg-sky-500 rounded-[40px] outline-none"
           >
             <Link to="about">About us</Link>
           </button>
           <button
             type="button"
-            className={`py-2 my-2 cursor-pointer flex flex-row group justify-center items-center  text-white mx-3  px-9   font-medium text-[18px] opacity-45  bg-black hover:bg-white hover:opacity-85 hover:text-black rounded-[40px]    outline-none`}
+            className="py-2 my-2 cursor-pointer flex flex-row group justify-center items-center text-white mx-3 px-9 font-medium text-[18px] bg-black hover:bg-white hover:text-black rounded-[40px] outline-none"
           >
             <Link to="contact">
               <p>get contact</p>

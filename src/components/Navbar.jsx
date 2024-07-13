@@ -3,14 +3,14 @@ import { Link, useLocation } from "react-router-dom"; // Import useLocation
 
 import { FaChevronRight } from "react-icons/fa6";
 import { useUser } from "../Context";
-import logo  from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import Admindropdown from "./Admindropdown";
 
 function Navbar() {
   const [state, setState] = useState(false);
   const location = useLocation(); // Use useLocation to get the current route
   const data = useUser();
-  
+
   const handleScrollToSection = (e, sectionId) => {
     e.preventDefault();
     const section = document.getElementById(sectionId);
@@ -23,45 +23,70 @@ function Navbar() {
     { title: "Home", path: "/" },
     { title: "Gallery", path: "gallery" },
     { title: "About", path: "about" },
-  ...(location.pathname === "/" ? [{ title: "Service", path: "#feauter" }] : []),
+    ...(location.pathname === "/"
+      ? [{ title: "Service", path: "#feauter" }]
+      : []),
   ];
 
   return (
     <nav
-      className="sticky top-0 z-50 bg-white items-center pt-5 px-4 mx-auto max-w-screen-2xl shadow-sm shadow-gray-200 sm:px-8 md:flex md:space-x-6"
+      className="sticky top-0 z-50 bg-white items-center  px-4 mx-auto max-w-screen-2xl w-screen shadow-sm shadow-gray-200 sm:px-8 md:flex md:space-x-6"
       // Added `sticky`, `top: 0`, and `z-50` to keep the navbar at the top
     >
       <div className="flex justify-between md:pl-12 items-center">
         <Link to="/">
-         <div className="h-24 w-24">
-        <img
-            src={logo}
-            // width={120}
-            // height={30}
-            className="h-28 w-24  pt-3"
-            alt="Logo"
-          />
-         </div>
-        
+          <div className="h-24 w-24">
+            <img
+              src={logo}
+              // width={120}
+              // height={30}
+              className="h-28 w-24  pt-3"
+              alt="Logo"
+            />
+          </div>
         </Link>
         <button
           className="text-gray-500 outline-none md:hidden"
           onClick={() => setState(!state)}
         >
           {state ? (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           )}
         </button>
       </div>
       <ul
         className={`flex-1 justify-between mt-12 md:text-sm md:font-medium md:flex md:mt-0 ${
-          state ? "absolute z-40 top-10 right-0 px-4 border-b bg-white rounded-bl md:border-none md:static sidebar" : "hidden"
+          state
+            ? "absolute z-40 top-10 right-0 px-4 border-b bg-white rounded-bl md:border-none md:static sidebar"
+            : "hidden"
         }`}
       >
         <div className="items-center space-y-5 md:flex md:space-x-6 md:space-y-0 md:ml-12">
@@ -71,7 +96,10 @@ function Navbar() {
               key={idx}
             >
               {typeof item.path === "string" && item.path.startsWith("#") ? (
-                <a href={item.path} onClick={(e) => handleScrollToSection(e, item.path.slice(1))}>
+                <a
+                  href={item.path}
+                  onClick={(e) => handleScrollToSection(e, item.path.slice(1))}
+                >
                   {item.title}
                 </a>
               ) : (
@@ -82,11 +110,10 @@ function Navbar() {
         </div>
         <li className="order-2 py-5 md:py-0 flex">
           {data.user ? (
-
             <div>
-              <Admindropdown/>
+              <Admindropdown />
             </div>
-
+          ) : (
             // <div className="flex">
             //   <button
             //     className="py-2 mx-5 px-5 rounded-lg font-medium text-white text-center bg-cyan-300 hover:bg-indigo-500 active:bg-indigo-700 duration-150 block md:py-3 md:inline"
@@ -95,20 +122,19 @@ function Navbar() {
             //   </button>
             //   <Logout />
             // </div>
-          ) :  location.pathname !== "/contact" && (
-            <Link to="/contact">
-              <div id="buttonid" className="group md:pr-28">
-             
-                <div
-                  className="flex text-2xl  items-center justify-center gap-x-2 py-2 px-4 text-gray-100  font-medium duration-150 active:bg-gray-100 bg-blue-600 opacity-75 rounded-2xl md:inline-flex"
-                >
-                  contact us
-                 <div className="hidden group-hover:block"><FaChevronRight /></div> 
+            location.pathname !== "/contact" && (
+              <Link to="/contact">
+                <div id="buttonid" className="group md:pr-28">
+                  <div className="flex text-2xl  items-center justify-center gap-x-2 py-2 px-4 text-gray-100  font-medium duration-150 active:bg-gray-100 bg-blue-600 opacity-75 rounded-2xl md:inline-flex">
+                    contact us
+                    <div className="hidden group-hover:block">
+                      <FaChevronRight />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            )
           )}
-         
         </li>
       </ul>
     </nav>
