@@ -1,10 +1,33 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { facebook, telegram, tiktok, youtube } from "../assets";
 
 import { FaChevronRight } from "react-icons/fa6";
 import { useUser } from "../Context";
 import logo from "../assets/logo.png";
 import Admindropdown from "./Admindropdown";
+const socialMedia = [
+  {
+    id: "social-media-1",
+    icon: telegram,
+    link: "https://web.telegram.org/a/#-1001663955988",
+  },
+  {
+    id: "social-media-2",
+    icon: facebook,
+    link: "https://www.facebook.com/profile.php?id=100089108505894&mibextid=rS40aB7S9Ucbxw6",
+  },
+  {
+    id: "social-media-3",
+    icon: youtube,
+    link: "https://youtube.com/@al-mehdialmediterbiyacente9301?si=_PQEn1_7gy-EpShO",
+  },
+  {
+    id: "social-media-4",
+    icon: tiktok,
+    link: "https://vm.tiktok.com/ZMjab9vmv/?fbclid=IwAR1WmlvW0ZKwxCJ_xhk9f0ENTE9baBNAzrsuqfM5i4J0S68V-qO9XED0hn4",
+  },
+];
 
 function Navbar() {
   const [state, setState] = useState(false);
@@ -125,7 +148,7 @@ function Navbar() {
             location.pathname !== "/contact" && (
               <Link to="/contact">
                 <div id="buttonid" className="group md:pr-28">
-                  <div className="flex text-2xl  items-center justify-center gap-x-2 py-2 px-4 text-gray-100  font-medium duration-150 active:bg-gray-100 bg-blue-600 opacity-75 rounded-2xl md:inline-flex">
+                  <div className="flex text-2xl  items-center justify-center gap-x-2 py-2 px-4 text-gray-500 md:text-gray-100  font-medium duration-150 active:bg-gray-100 md:bg-blue-600 opacity-75 rounded-2xl md:inline-flex">
                     contact us
                     <div className="hidden group-hover:block">
                       <FaChevronRight />

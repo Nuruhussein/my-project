@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import quran from "../assets/quran.png";
-
+import hero from "../assets/hero.png";
 function About() {
   return (
     <div className="max-w-screen-2xl mx-auto">
@@ -22,14 +22,14 @@ function About() {
           <div className=" flex xl:flex-row  flex-col max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden  md:px-8">
             <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
               <h1 className="text-sm text-indigo-600 font-medium">
-                Over 200 successful deals
+                አል መህዲ ተርቢያ ማዕከል
               </h1>
               <h2 className="text-4xl text-gray-800 font-extrabold md:text-5xl">
-                We help startups to grow and make money
+                አድራሻ ቁ1-ፋሪ ቁ2-ጀሞ1 ቁ3-ደሴ ይገኛል።
               </h2>
               <p>
-                Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
-                doloremque laudantium, totam rem aperiam, eaque ipsa quae.
+                አል መህዲ መርከዝ መነሻችን በሓበሻሆኖ መድረሻችን ዓለምን በቁርኣን ብርሓን በማፍካት ፣ትዉልድን
+                በተፈጥሮ ሰዋዊ ማንነት ለማነፅ እንተጋለን!
               </p>
               <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
                 {/* <a href="javascript:void(0)" className="block py-2 px-4 text-center text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg hover:shadow-none">
@@ -65,30 +65,41 @@ function About() {
         <div className=" flex flex-col-reverse max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden  md:px-8">
           <div className="flex-none space-y-5  md:mt-0 mt-10 px-4 sm:max-w-lg md:px-0 lg:max-w-3xl">
             <h1 className="text-sm text-indigo-600 font-medium">
-              Over 200 successful deals
+              Al Mehdi Qur'anic & Terbiya Center
             </h1>
             <h2 className="text-2xl text-gray-800 font-semibold md:text-3xl">
-              About Us
+              ስለ እኛ
             </h2>
             <p
               className={`sm:text-[18px] text-gray-500  text-[10px]sm:leading-[36.8px] leading-[30.8px] font-poppins font-normal max-w-3xl`}
             >
-              MoDreams Pharmaceuticals is a private limited company that is
-              currently selling pharmaceutical supplies for wholesalers and
-              retailers. The company started functioning since 2019 G.C
+              አል መህዲ የቁርዓን ትምህርትና የተርቢያ ማዕከል በአዲስ አበባ ከ2014 ዓ.ል ጀምሮ በተለያየ የእድሜ
+              ከልል ያሉ ተማሪዎችን በተደራጀ መልኩ እያስተማረ የሚገኝ ማዕከል ሲሆን በቋሚ ፕሮግራም በሂፍዝና ነዞር
+              ተመላላሽ ተማሪዎችን እያስተማረ ይገኛል።
             </p>
             <h2 className="text-2xl text-gray-800 font-semibold md:text-3xl">
-              our mission
+              ግባችን
             </h2>
             <p
               className={`sm:text-[18px] text-gray-500  text-[10px]sm:leading-[36.8px] leading-[30.8px] font-poppins font-normal max-w-3xl`}
             >
-              MoDreams Pharmaceuticals is a private limited company that is
-              currently selling pharmaceutical supplies for wholesalers and
-              retailers. The company started functioning since 2019 G.C is a
-              private limited company that is currently selling pharmaceutical
-              supplies for wholesalers and retailers. The company started
-              functioning since 2019 G.C
+              መነሻችን ሓበሻ የቀን ብርሀን ያካበባት የሌሊት ፅልመት ያካለላትን ዓለም በቁርኣን ብርሓን የማፍካት የላቀ
+              ግብ መዳረሻችን አድርገን ትዉልድን በተፈጥሮ ሰዋዊ ማንነት ለማነፅ እንተጋለን! ለግዜዉ 3 ቅርንጫፎች
+              ኑረዉናል አልሃምዱ ሊላህ በአላህ ፈቃድ እንቀጥላለን። አል መህዲ መርከዝ መነሻችን በሓበሻሆኖ መዳረሻችን
+              ዓለምን በቁርኣን ብርሓን በማፍካት ፣ትዉልድን በተፈጥሮ ሰዋዊ ማንነት ለማነፅ እንተጋለን!
+            </p>
+            <h2 className="text-2xl text-gray-800 font-semibold md:text-3xl">
+              #የምዝገባ_መስፈርቶች
+            </h2>
+            <p
+              className={`sm:text-[18px] text-gray-500  text-[10px]sm:leading-[36.8px] leading-[30.8px] font-poppins font-normal max-w-3xl`}
+            >
+              1. የሚሰጡ ቂርዓቶችና እና ደርሶችን በአግባቡ መከታተል የሚችል <br />
+              2. ለተሻለ ጥራት ጥሩ (ፈጣን) ኢንተርኔት አገልግሎት ማግኘት የሚችል <br /> 3. በተመደበለት ሰዓት
+              ሁልግዜም ሳያቋርጥ በሰአቱ መገኘት የሚችል <br />
+              4. በየግዜው የሚላክለትን (የሚሰጠውን) የት/ት አይነቶች በአግባቡ የሚያጠና <br /> 5. ት/ት ቤቱ
+              የሚያወጣቸውን ህግና ደንቦች የሚያከብር <br />
+              6. በተጨማሪም የወርሀዊ ክፍያ ጊዜ ሳያሳልፍ በቀኑ መክፈል የሚችል
             </p>
 
             <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
@@ -99,7 +110,7 @@ function About() {
                 href="contact"
                 className="flex max-w-48 items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex"
               >
-                Get contact
+                ያግኙን
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 20 20"
@@ -115,11 +126,8 @@ function About() {
               </a>
             </div>
           </div>
-          <div className=" md:flex hidden mt-0 md:max-w-xl w-full">
-            <img
-              src="https://png.pngtree.com/png-clipart/20200722/original/pngtree-abstract-mosque-moslem-logo-vector-for-corporate-business-free-logo-design-png-image_5007087.jpg"
-              alt="Float UI logo"
-            />
+          <div className=" md:flex hidden rounded-full mt-0 mb-14 md:max-w-xl w-full">
+            <img src={hero} alt="Float UI logo" className="rounded-b-full " />
           </div>
         </div>
       </section>

@@ -4,9 +4,10 @@ import { RxDotFilled } from "react-icons/rx";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
-import image1 from "../assets/amir.jpg";
+import image1 from "../assets/quran.png";
 import image2 from "../assets/image2.png";
 import image3 from "../assets/image3.png";
+
 import { FaChevronRight } from "react-icons/fa6";
 
 function Landing() {
