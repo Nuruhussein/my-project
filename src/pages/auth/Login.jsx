@@ -22,7 +22,7 @@ function Login() {
 
     try {
       const res = await axios.post(
-        `${baseurl}/login`,
+        `${baseurl}/auth/login`,
         { username, password },
         { withCredentials: true } // Ensure credentials are sent with the request
       );
@@ -38,7 +38,6 @@ function Login() {
       // console.error(err);
       // Handle different types of errors
       if (err.response && err.response.status === 401) {
-        
         setError("Invalid username or password.");
       } else {
         setError("An unexpected error occurred. Please try again.");
@@ -90,16 +89,16 @@ function Login() {
           </div>
           <button
             type="submit"
-            className={`w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150 ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
+            className={`w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150 ${
+              isLoading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             disabled={isLoading}
           >
             {isLoading ? "Signing in..." : "Sign in"}
           </button>
           <div className="text-center">
             {error && (
-              <span style={{ color: "red", marginTop: "10px" }}>
-                {error}
-              </span>
+              <span style={{ color: "red", marginTop: "10px" }}>{error}</span>
             )}
           </div>
         </form>
