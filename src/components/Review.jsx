@@ -2,7 +2,19 @@ import React from "react";
 import amir from "../assets/amir.jpg";
 import amakari1 from "../assets/amakari1.jpeg";
 import amakari2 from "../assets/amakari2.jpeg";
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 function Review() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
+
   const reviews = [
     {
       imgURL: amir,
@@ -28,18 +40,37 @@ function Review() {
 
   return (
     <section className="max-container pt-10">
-      <h3 className="text-center text-4xl font-bold">
-        <span className="text-coral-red text-gray-700">
-          የ አል መህዲ የስራ አመራር አባላት
-        </span>
-      </h3>
-      <p className="m-auto mt-4 max-w-lg  text-center font-montserrat text-gray-600 text-lg leading-7">
-        ማእከላችን ቁርአንን እና የተለያዪ ዒልሞችን በማስተማር የረጅም አመታት ልምድ ባላቸው ኡስታዞች የተዋቀረ ነው
-      </p>
+      <motion.div
+        ref={ref}
+        variants={{
+          hidden: { opacity: 0, x: -200 },
+          visible: { opacity: 1, x: 0 },
+        }}
+        initial="hidden"
+        animate={mainControls}
+        transition={{ duration: 0.75, delay: 0.5 }}
+      >
+        <h3 className="text-center text-4xl font-bold">
+          <span className="text-coral-red text-gray-700">
+            የ አል መህዲ የስራ አመራር አባላት
+          </span>
+        </h3>
+        <p className="m-auto mt-4 max-w-lg  text-center font-montserrat text-gray-600 text-lg leading-7">
+          ማእከላችን ቁርአንን እና የተለያዪ ዒልሞችን በማስተማር የረጅም አመታት ልምድ ባላቸው ኡስታዞች የተዋቀረ ነው
+        </p>
+      </motion.div>
 
       <div className="mt-24 flex flex-1 justify-evenly items-center max-lg:flex-col gap-14">
         {reviews.map((review, index) => (
-          <div
+          <motion.div
+            ref={ref}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
+            }}
+            initial="hidden"
+            animate={mainControls}
+            transition={{ duration: 0.75, delay: index * 0.25 }}
             key={index}
             className="flex justify-center items-center flex-col"
           >
@@ -59,7 +90,7 @@ function Review() {
             <h3 className="mt-1 font-palanquin text-3xl text-center font-bold">
               {review.customerName}
             </h3>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

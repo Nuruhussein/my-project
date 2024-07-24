@@ -1,5 +1,6 @@
 import { facebook, telegram, tiktok, youtube } from "../assets";
-
+import { motion, useInView, useAnimation } from "framer-motion";
+import { useEffect, useRef } from "react";
 const footerLinks = [
   {
     title: "Menu",
@@ -65,6 +66,15 @@ const socialMedia = [
 ];
 
 const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
   return (
     <section
       className={`flex 
@@ -73,16 +83,36 @@ max-w-screen-2xl mx-auto justify-center px-10 items-center mt-16 bg-gray-100 sm:
       <div
         className={`flex justify-center items-start md:flex-row flex-col mb-8 w-full`}
       >
-        <div className="flex-[1] flex flex-col justify-start mr-10">
+        <motion.div
+          ref={ref}
+          variants={{
+            hidden: { opacity: 0, x: -200 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate={mainControls}
+          transition={{ duration: 0.75, delay: 0.5 }}
+          className="flex-[1] flex flex-col justify-start mr-10"
+        >
           <h2 className="font-semibold text-3xl text-gray-500   ">About us</h2>
           <p
             className={`font-poppins font-normal text-gray-400 text-[18px] leading-[30.8px] mt-4 max-w-[312px]`}
           >
             ሙሉ በሙሉ ለቂርአት ምቹ በሆነ መልኩ በብቁ ኡስታዞች ይሰጣል።
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10">
+        <motion.div
+          ref={ref}
+          variants={{
+            hidden: { opacity: 0, y: 200 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          initial="hidden"
+          animate={mainControls}
+          transition={{ duration: 0.75, delay: 0.55 }}
+          className="flex-[1.5] w-full flex flex-row justify-between flex-wrap md:mt-0 mt-10"
+        >
           {footerLinks.map((footerlink) => (
             <div
               key={footerlink.title}
@@ -105,21 +135,32 @@ max-w-screen-2xl mx-auto justify-center px-10 items-center mt-16 bg-gray-100 sm:
               </ul>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <div className="w-full flex justify-center items-center  md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
         <div className="flex flex-row  md:mt-0 mt-6">
           {socialMedia.map((social, index) => (
-            <img
-              key={social.id}
-              src={social.icon}
-              alt={social.id}
-              className={`w-[31px] h-[31px] object-contain cursor-pointer ${
-                index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
-              }`}
-              onClick={() => window.open(social.link)}
-            />
+            <motion.div
+              ref={ref}
+              variants={{
+                hidden: { opacity: 0, x: -200 },
+                visible: { opacity: 1, x: 0 },
+              }}
+              initial="hidden"
+              animate={mainControls}
+              transition={{ duration: 0.75, delay: index * 0.5 }}
+            >
+              <img
+                key={social.id}
+                src={social.icon}
+                alt={social.id}
+                className={`w-[31px] h-[31px] object-contain cursor-pointer ${
+                  index !== socialMedia.length - 1 ? "mr-6" : "mr-0"
+                }`}
+                onClick={() => window.open(social.link)}
+              />
+            </motion.div>
           ))}
         </div>
       </div>

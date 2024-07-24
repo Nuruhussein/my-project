@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
 import image1 from "../assets/quran.png";
 import image2 from "../assets/image2.png";
 import image3 from "../assets/image3.png";
-
 import { FaChevronRight } from "react-icons/fa6";
 
 function Landing() {
@@ -37,37 +36,42 @@ function Landing() {
   }, [currentIndex]);
 
   const slideVariants = {
-    initial: { opacity: 0.7, scale: 0.99 },
-    animate: { opacity: 1, scale: 1 },
-    exit: { opacity: 0.5, scale: 0.95 },
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    exit: { opacity: 0 },
   };
 
   return (
-    <div className="max-w-screen-2xl w-screen mx-auto h-[680px]  mb-20 pb-4 relative group">
-      <motion.div
-        key={currentIndex}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={slideVariants}
-        transition={{ duration: 2, ease: "easeInOut" }}
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(255,255,255,0.2)), url(${slides[currentIndex].url})`,
-        }}
-        className="w-full h-full bg-cover bg-center flex flex-col justify-center items-center text-center"
-      >
+    <div className="max-w-screen-2xl w-screen mx-auto h-[680px] mb-20 pb-4 relative group">
+      <AnimatePresence>
+        <motion.div
+          key={currentIndex}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={slideVariants}
+          transition={{ duration: 1, ease: "easeInOut" }}
+          style={{
+            backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(255,255,255,0.2)), url(${slides[currentIndex].url})`,
+          }}
+          className="absolute top-0 left-0 w-full h-full bg-cover bg-center z-0"
+        />
+      </AnimatePresence>
+      <div className="relative w-full h-full flex flex-col justify-center items-center text-center z-10">
         <TypeAnimation
           sequence={[
-            "Al Mehdi Qur'anic and \n Terbiya  Center",
+            "Al Mehdi Qur'anic and \n Terbiya Center",
             1500,
             "contact us \n now",
             1500,
           ]}
           wrapper="h2"
-          speed={20}
+          speed={10}
+          repeatDelay={1000}
+          cursor={false}
           style={{ whiteSpace: "pre-line", height: "195px", display: "block" }}
           className="font-bold text-white sm:text-[48px] text-[40px] leading-[56.8px] font-poppins"
-          repeat={2}
+          repeat={Infinity}
         />
         <div className="sm:flex-row flex flex-col">
           <button
@@ -88,20 +92,20 @@ function Landing() {
             </div>
           </button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Left Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer z-10">
         <BsChevronCompactLeft onClick={prevSlide} size={30} />
       </div>
 
       {/* Right Arrow */}
-      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer">
+      <div className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer z-10">
         <BsChevronCompactRight onClick={nextSlide} size={30} />
       </div>
 
       {/* Navigation Dots */}
-      <div className="flex top-4 justify-center py-2">
+      <div className="flex top-4 justify-center py-2 z-10">
         {slides.map((slide, slideIndex) => (
           <div
             key={slideIndex}
