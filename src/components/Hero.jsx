@@ -34,7 +34,7 @@ function Hero() {
                       }}
                       initial="hidden"
                       animate={mainControls}
-                      transition={{ duration: 0.75, delay: 0.5 }}
+                      transition={{ duration: 0.75, delay: 0.25 }}
                     >
                       <img
                         className="object-cover object-center  mx-auto rounded-3xl shadow-2xl"
@@ -55,7 +55,7 @@ function Hero() {
               }}
               initial="hidden"
               animate={mainControls}
-              transition={{ duration: 0.95, delay: 0.5 }}
+              transition={{ duration: 0.95, delay: 0.25 }}
               className="flex flex-col items-start mt-12 mb-16 text-left lg:flex-grow lg:w-1/2 lg:pl-6 xl:pl-24 md:mb-0 xl:mt-0"
             >
               <span className="mb-8 text-xs font-bold tracking-widest text-blue-600 uppercase">
