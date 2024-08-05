@@ -94,7 +94,7 @@ function Gallery() {
               <img
                 src={PF + item.image}
                 alt={item.title}
-                className="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110"
+                className="w-full h-[380px] object-cover transition-transform duration-300 transform group-hover:scale-110"
               />
               <div
                 className="absolute inset-0 flex items-center justify-center opacity-0 bg-black bg-opacity-50 transition-opacity duration-300 group-hover:opacity-100"
